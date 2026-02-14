@@ -31,7 +31,7 @@ namespace BlindfoldProtocol.Systems
 
             // First, deselect all entities
             var entityManager = EntityManager;
-            foreach (var entity in SystemAPI.Query<RefRO<BlindfoldProtocol.Components.CubeTag>>().WithAll<BlindfoldProtocol.Components.Selected>())
+            foreach (var (cubeTag, entity) in SystemAPI.Query<RefRO<BlindfoldProtocol.Components.CubeTag>>().WithAll<BlindfoldProtocol.Components.Selected>().WithEntityAccess())
             {
                 entityManager.RemoveComponent<BlindfoldProtocol.Components.Selected>(entity);
             }

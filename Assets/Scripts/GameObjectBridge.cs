@@ -59,7 +59,9 @@ namespace BlindfoldProtocol
             meadowGameObject.transform.localScale = new Vector3(10, 1, 10);
 
             var renderer = meadowGameObject.GetComponent<Renderer>();
-            var material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            // Use standard shader or create simple material
+            var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard") ?? Shader.Find("Diffuse");
+            var material = new Material(shader);
             material.color = new Color(0.2f, 0.8f, 0.2f); // Green color
             renderer.material = material;
         }
@@ -72,7 +74,9 @@ namespace BlindfoldProtocol
             cubeGameObject.transform.localScale = Vector3.one;
 
             var renderer = cubeGameObject.GetComponent<Renderer>();
-            var material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            // Use standard shader or create simple material
+            var shader = Shader.Find("Universal Render Pipeline/Lit") ?? Shader.Find("Standard") ?? Shader.Find("Diffuse");
+            var material = new Material(shader);
             material.color = new Color(0.8f, 0.2f, 0.2f); // Red color
             renderer.material = material;
         }
