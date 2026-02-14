@@ -70,6 +70,7 @@ namespace BlindfoldProtocol
         {
             cubeGameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
             cubeGameObject.name = "PlayerCube";
+            cubeGameObject.tag = "Player"; // Tag for identification
             cubeGameObject.transform.position = new Vector3(0, 0.5f, 0);
             cubeGameObject.transform.localScale = Vector3.one;
 

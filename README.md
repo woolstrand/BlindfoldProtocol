@@ -69,6 +69,6 @@ Since Unity ECS doesn't directly handle rendering in all cases, the `GameObjectB
 - **Unity Version**: 2022.3.10f1
 - **Rendering**: Uses Universal Render Pipeline (URP) shaders
 - **Input**: Classic Unity Input system for mouse controls
-- **Camera**: Orthogonal top-down view at position (0, 15, 0) looking down
+- **Camera**: Perspective top-down view at position (0, 15, 0) looking down
 - **Movement Speed**: 5 units per second
 - **Cube Height**: Maintained at 0.5 units above ground during movement

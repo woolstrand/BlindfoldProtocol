@@ -39,15 +39,17 @@ namespace BlindfoldProtocol.Systems
             // Perform raycast to check if cube was clicked
             if (Physics.Raycast(ray, out hit, 100f))
             {
-                // Check if we hit an entity with CubeTag
-                // In a full implementation, we'd need to track game objects to entities
-                // For now, we'll select the cube if any collider was hit
-                foreach (var (cubeTag, entity) in SystemAPI.Query<RefRO<BlindfoldProtocol.Components.CubeTag>>().WithEntityAccess())
+                // Check if we hit the cube GameObject (tagged as "Player")
+                if (hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.name == "PlayerCube")
                 {
-                    if (!entityManager.HasComponent<BlindfoldProtocol.Components.Selected>(entity))
+                    // Select the cube entity
+                    foreach (var (cubeTag, entity) in SystemAPI.Query<RefRO<BlindfoldProtocol.Components.CubeTag>>().WithEntityAccess())
                     {
-                        entityManager.AddComponent<BlindfoldProtocol.Components.Selected>(entity);
-                        Debug.Log("Cube selected");
+                        if (!entityManager.HasComponent<BlindfoldProtocol.Components.Selected>(entity))
+                        {
+                            entityManager.AddComponent<BlindfoldProtocol.Components.Selected>(entity);
+                            Debug.Log("Cube selected");
+                        }
                     }
                 }
             }
